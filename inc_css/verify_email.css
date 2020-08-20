@@ -1,0 +1,32 @@
+.enter_otp {
+    margin:auto auto;
+    background-color: rgba(141, 139, 139, 0.459);
+    width: 500px;
+    height: 500px;
+    border-radius: 10px;
+}
+#otp_in {
+    text-align: center;
+    margin: 0px 120px;
+    width: 260px;
+}
+#button_id {
+    margin: 0px 120px;
+    border-radius: 5px;
+}
+#resend_id {
+    margin: 0px -20px;
+    border-radius: 5px;
+}
+.title_p {
+    text-align: center;
+    font-size: 46px;
+}
+.sender_p {
+    text-align: center;
+    font-size: 20px;
+}
+#infrom_mail {
+    text-align: center;
+    font-size: 20px;
+}

@@ -1,0 +1,18 @@
+.standerd_input_signup {
+    width: 300px;
+}
+#gender_in {
+display: none;
+}
+#gender_print {
+    display: none;
+}
+#main_picture:hover {opacity: 0.7;}
+#sub_picture1:hover {opacity: 0.7;}
+#sub_picture2:hover {opacity: 0.7;}
+#sub_picture3:hover {opacity: 0.7;}
+#sub_picture4:hover {opacity: 0.7;}
+#user-details{
+    padding: 5px;
+}
+

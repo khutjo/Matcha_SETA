@@ -1,0 +1,27 @@
+.body_color {
+    background: rgb(255, 255, 255);
+}
+.top_div {
+    background: rgb(179, 179, 179);
+    width: 100%;
+    height: 80px;
+}
+.standerd_buttton {
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+}
+#username_in {
+    margin: 6px 0px;
+    height: 40px;
+}
+#password_in {
+    margin: 6px 0px;
+    height: 40px;
+}
+#what {
+    color: white;
+}
+.standerd_input_signup {
+    width: 400px;
+}
+
