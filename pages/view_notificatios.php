@@ -36,21 +36,10 @@ if (!isset($_SESSION))
     $likes = count($people_you_like_results);
     
 
-    $query= $conn->prepare("SELECT * FROM location WHERE UserName in (:usernamea, :usernameb)");
-    $query->bindValue(':usernamea', $_SESSION["logged_in_user"]);
-    $query->bindValue(':usernameb', "Matt_Kemp");
-    $query->execute();
-    $location = $query->fetchAll(PDO::FETCH_ASSOC);
-
-    // echo $location[0]["lat"], "\n";
-    // echo $location[0]["lon"], "\n";
-    // echo $location[1]["lat"], "\n";
-    // echo $location[1]["lon"], "\n";
-    // "origins=".$location[0]["lat"].",".$location[0]["lon"]."&destinations=".$location[1]["lat"].",".$location[1]["lon"]
-    // $data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=matric&origins=".$location[0]["lat"].",".$location[0]["lon"]."&destinations=".$location[1]["lat"].",".$location[1]["lon"]."&key=YOUR_API_KEY");
-    $data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=matric&origins=-25.739264,28.213248&&destinations=18.62744421970849,-33.9015521302915&&key=YOUR_API_KEY);
-    var_dump($data);
-
+    
+    // var_dump($location_data->duration);
+    // var_dump($location_data->duration);
+    // var_dump($location_data->duration);
 
 //     //user id 
     // $conn = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
@@ -135,23 +124,8 @@ if (!isset($_SESSION))
         <div class="set_size" id="profiles_get">
         <!-- <button onclick="get_profiles()">pressme<button> -->
         </div>
-  </div>
-    </div>
-        <div id="hold_res">      
-            <div class="col-sm-2 well">
-                <div class="thumbnail">
-                <strong><p>Filter by:</p></strong>
-                </div>      
-                <div class="well">
-                <button class="btn btn-success" onclick="filter(1)">Messages</button>
-                </div>
-                <div class="well">
-                <button class="btn btn-info" onclick="filter(2)">Views</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+  
+
 
 </div>
 

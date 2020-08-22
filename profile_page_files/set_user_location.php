@@ -27,8 +27,9 @@ session_start();
     $set_locaton = new location_info($dsn, $user, $password, $_SESSION["logged_in_user"]);
     
     if ("user_info=" != $data){
+        var_dump($data);
         $data = location_received($data, $where_from);
-        // var_dump($data);
+        var_dump($data);
         if ($where_from == "html")
             $set_locaton->set_current_location_html($_SESSION["logged_in_user"],$data);
         else if ($where_from == "geobytes")

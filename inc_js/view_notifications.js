@@ -1,23 +1,12 @@
-
-function mkObj() {
-	var obj;
-	try{
-		obj = new XMLHttpRequest();
-	} catch(e){
-		try{
-			obj = new ActiveXObject("Msxml2.XMLHTTP");
-		} catch (e){
-			try{
-				obj = new ActiveXObject("Microsoft.XMLHTTP");
-			} catch(e){
-				alert("your browser is weird");	
-				return false;
-			}			
-		}
-	}
-	return (obj);
+function delete_notification(notice_id){
+    $.post("../pages/notification.php",{
+        Delete_notice: notice_id
+    },
+    function(data,status){
+        console.log(data)
+        location.reload()
+    });
 }
-
 
 function make_profile_div_boxes(count){
         
@@ -53,7 +42,7 @@ function make_profile_div_boxes(count){
     
 }
 
-function add_profile_data(name, propic, age, bio, count) {
+function add_profile_data(name, propic, age, bio, notification, notice_id, count) {
         
     var con_div = document.getElementById("box3_divl"+count);
     var para = document.createElement("p");
@@ -85,8 +74,51 @@ function add_profile_data(name, propic, age, bio, count) {
     para.innerHTML = "ABOUT: "  + bio;
     con_div.appendChild(para);
     pre_name = name;
+
+    var para = document.createElement("p");
+    para.innerHTML = "NOTIFICATION: "  + notification;
+    con_div.appendChild(para);
+    pre_name = name;
     // console.log([keep_count]);
+
+    
+    var butt = document.createElement("button");
+    butt.setAttribute("class", "btn btn-danger");
+    butt.setAttribute("id", "notice_id"+notice_id);
+    butt.onclick = function(){
+        delete_notification(notice_id);
+        // modal(name);
+    };
+    var text = document.createTextNode("Delete");
+    butt.appendChild(text);
+    con_div.appendChild(butt);
+
 }
 
-make_profile_div_boxes(0);
-add_profile_data("geoffree", "fuck that", "24", "im pickle rick", 0);
+
+
+function get_notification(){
+    $.post("../pages/notification.php",{
+        notification: "get_full_notification"
+    },
+    function(data,status){
+        if (data == "nothing")
+        console.log("hello i got nothing")
+        else{
+            count = 0;
+            notification = JSON.parse(data)
+            notification.forEach(element => {
+                make_profile_div_boxes(count);
+                add_profile_data(element[0], element[3], element[4], decodeURI(element[5]), element[1], element[2], count);
+                count++
+            });
+        }
+    });
+}
+
+(function(){
+    function get_connections(){
+        get_notification();
+    }
+window.addEventListener('load', get_connections, false);
+})();

@@ -85,7 +85,7 @@ error_reporting(E_ALL);
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="../inc_js/view_profile_model.js"></script>
-<!-- <script src="../inc_js/loged_in_handler.js"></script> -->
+<script src="../inc_js/loged_in_handler.js"></script>
 <script src="../inc_js/get_user_location.js"></script>
 <script src="../inc_js/search_function.js"></script>
 <script src="../inc_js/main_page.js"></script>

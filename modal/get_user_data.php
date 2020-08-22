@@ -1,6 +1,7 @@
 <?php
 	include_once "../config/connect_class.php";
 	$data = file_get_contents("php://input");
+	
 	session_start();
 
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -26,12 +27,29 @@
 			
 
 			/* fetch user location */
-			$get_loc = $my_connection->prepare("SELECT street, city, country FROM location WHERE UserName = :username");
-			$get_loc->bindValue(':username', $data);
-			$get_loc->execute();
-			$location = $get_loc->fetchAll(PDO::FETCH_ASSOC);
-
-			$more_data = array_merge($profile, $images, $basic_shit, $location);
+			$query= $my_connection->prepare("SELECT * FROM location WHERE UserName in (:usernamea, :usernameb)");
+			$query->bindValue(':usernamea', $_SESSION["logged_in_user"]);
+			$query->bindValue(':usernameb',  $data);
+			$query->execute();
+			$location = $query->fetchAll(PDO::FETCH_ASSOC);
+		
+			if (count($location) == 2){
+				if (isset($location[0]["address"]))
+					$origins = str_replace(" ","+",$location[0]["address"]);
+				else 
+					$origins=$location[0]["lat"].",".$location[0]["lon"];
+				if (isset($location[1]["address"]))
+					$destinations = str_replace(" ","+",$location[1]["address"]);
+				else 
+					$destinations=$location[1]["lat"].",".$location[1]["lon"];
+					
+				$data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=matric&origins=".$origins."&destinations=".$destinations."&key=AIzaSyCyPPJAN_R1wNuzKbSa2SIjLk3i_nKl0Ak");
+				$location_data["location"] = json_decode($data)->rows[0]->elements[0]->distance->text;
+			}else{
+				$location_data["location"] = "Not specified";
+			}
+			
+			$more_data = array_merge($profile, $images, $basic_shit, $location_data);
 
 			echo json_encode($more_data);
 			// echo json_encode(array($interests));
