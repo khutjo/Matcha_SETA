@@ -26,7 +26,7 @@ function modal(name){
 				document.getElementById('user_name').innerText = info.UserName;
                 document.getElementById('profile_bio').innerText = decodeURI(info.biography);
                 // if (info[6])
-                    document.getElementById('location_tag').innerText = info[6].street + ', ' + info[6].city + ', ' + info[6].country;
+                    document.getElementById('location_tag').innerText = info.location;
 				document.getElementById('fame_rating').innerText = info.fame_rating;			
 				document.getElementById('alt_image0').setAttribute('src', info[1].profile_picture);
 				document.getElementById('alt_image1').setAttribute('src', info[2].profile_picture);
