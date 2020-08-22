@@ -184,7 +184,7 @@ function check_like(){
             get_likes(data);
             // window.alert(data);
         }else if (data == 0){
-            print_p.innerHTML = "No one likes you peasant, GO AND HANG YOURSELF";
+            print_p.innerHTML = "No New likes";
         }
         // window.alert(data);
     });

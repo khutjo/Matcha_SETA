@@ -63,6 +63,7 @@
 <footer class="container-fluid text-center">
     <p>Page footer</p>
 </footer>
+<script src="../inc_js/get_user_location.js"></script>
 <script src="../inc_js/logout.js"></script>
 </body>
 </html>

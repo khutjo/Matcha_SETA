@@ -61,14 +61,6 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == "true"){
             <p id="sign_p3" class="label label-danger"></p>
         </div>
         <div class="form-group">
-            <select class="form-control">
-                <option>Gender</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Rather not specify</option>
-            </select>
-        </div>
-        <div class="form-group">
             <input id="sin_username_db" class="form-control" type="text" name="username" oninput="sin_username()" placeholder="Username"><br />
             <p id="sign_p4" class="label label-danger"></p>
         </div>

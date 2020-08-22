@@ -171,15 +171,16 @@ function startup(){
         my_gender: "get"
     },
     function(data,status){
-        // window.alert()
-        get_my_gender.options[get_my_gender.selectedIndex].text;
-        get_my_gender.options[get_my_gender.selectedIndex].text = data;
+        // window.alert(data)
+        // get_my_gender.options[get_my_gender.selectedIndex].text;
+        get_my_gender.value = data;
     });
     $.post("../profile_page_files/profile_elements.php",{
         their_gender: "get"
     },
     function(data,status){
         get_their_gender.options[get_their_gender.selectedIndex].text = data;
+        // get_their_gender.value = data;
     });
     $.post("../profile_page_files/profile_elements.php",{
         get_age: "get"
@@ -311,3 +312,6 @@ function delete_account() {
         window.alert("thought so\n\n\npussy");
     }
 }
+
+
+  

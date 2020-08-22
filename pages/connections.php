@@ -2,6 +2,9 @@
     session_start();
     if (!isset($_SESSION['logged_in']) && !isset($_SESSION['logged_in_user']))
         header("Location: ../index.php");
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,33 +23,51 @@
     <?php include_once "navigation.php";?>
 <div id="fooBar"></div>
 
-<!-- <button onclick="del_div()">button</button> -->
-<div class="container text-center">
-    <!-- <div class="row" > -->
-        <div class="col-sm-2 well" id="main_div">
-            <h3>Friends list:</h3>
-            <p id="showme"></p>
-        </div >
-    <!-- </div> -->
-    <div class="col-sm-7" id="likes_container_div">
-        <div class="row">
-            <div class="col-sm-12">
+
+
+<div class="container text-center">   
+ 
+  <div class="row">
+    <div class="col-sm-3 well"id="main_div">
+      <div class="well">
+      <h3>Friends list:</h3>
+        <p id="showme"></p>
+      </div>
+
+    </div>
+    <div class="col-sm-7" >
+      <div class="row">
+      <div class="col-sm-12">
                 <div class="panel panel-default text-left">
                     <div class="panel-body">
                         <strong>Like Requests:</strong>  
                     </div>
                 </div>
-            </div>
-            <div id="hold_all">
+            </div><div id="hold_all">
                 <div id="likes_container_div">
 					<h1 id="show_requests" style="text-align:center" class="label label-danger"></h1>
                 <!-- <div class="set_size" id="profiles_get"> -->
                 </div>
             </div>
+      </div>
+      <div id="hold_all">
+        <div class="set_size" id="profiles_get">
+        <!-- <button onclick="get_profiles()">pressme<button> -->
+        </div>
+  </div>
+    </div>
+        <div id="hold_res">      
+            <div class="col-sm-2 well">
+                <div class="thumbnail">
+                    <strong><p>Views</p></strong>
+                </div>      
+                    <h1 id="show_requestsf" style="text-align:center" class="label label-danger">no new vews</h1>
+            </div>
         </div>
     </div>
 </div>
 
+</div>
 
 </body>
 
@@ -54,6 +75,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="../inc_js/view_profile_model.js"></script>
+<script src="../inc_js/get_user_location.js"></script>
 <script src="../inc_js/loged_in_handler.js"></script>
 <script src="../inc_js/search_function.js"></script>
 <script src="../inc_js/like_request.js"></script>

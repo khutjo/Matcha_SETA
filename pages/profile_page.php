@@ -52,7 +52,7 @@
                     <div class="col-lg-6">
                     <label for="gender">Gender:</label>
                     <select class="form-control" id="your_gender" oninput="your_gender_in()">
-                        <option value="nothing">select</option>
+                        <!-- <option value="nothing">select</option> -->
                         <option value="male">male</option>
                         <option value="female">female</option>
                         <option value="other">other</option>
@@ -63,6 +63,7 @@
                 <div class="col-lg-6">
                     <label for="preferences">Sexual preferences:</label>                    
                     <select class="form-control" id="their_gender" oninput="their_gender_in()"> 
+                        <option value="nothing">select</option>
                         <option value="other">Other</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -80,6 +81,16 @@
 
                 <div class="form-group row">
                     <div class="col-lg-6">
+                    <label for="gender">Location</label>
+                    <div >
+                        <input class="form-control" id="my_location" class="bio_input" ></textarea><br />
+                    </div>
+                        <p id="errorhandle_location"></p><hr/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-lg-6">
                     <label for="gender">Short bio about yourself:</label>
                     <div >
                         <textarea class="form-control" id="my_bio" class="bio_input" oninput="mid_about_me_in()" ></textarea><br />
@@ -88,7 +99,6 @@
                         <p id="errorhandlebio"></p><hr/>
                     </div>
                 </div>
-
                 <label for="tags">Tags list:</label>
                 <div style="width: 300px">
                 <!-- you will need to remove this-->
@@ -116,10 +126,11 @@
 </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../inc_js/get_user_location.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=yorapi_ky&callback=initMap&libraries=places&v=weekly" defer></script>
     <script src="../inc_js/profile_interest.js"></script>
     <script src="../inc_js/profile_page.js"></script>
     <script src="../inc_js/edit_account.js"></script>
-    <script src="../inc_js/geolocation.js"></script>
     <script src="../inc_js/logout.js"></script>
 	
 </html>

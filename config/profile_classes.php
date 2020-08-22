@@ -160,3 +160,61 @@ class get_tag_info extends connect{
         $this->my_tags = $stmt->fetchAll(); 
     }
 }
+
+class location_info extends connect{
+    public $current_location;
+
+    function __construct ($dsn, $user, $password, $username){
+        parent::__construct($dsn, $user, $password);
+        $this->get_current_location($username);
+    }
+    
+    function get_current_location($username){
+        $sql = "SELECT * FROM `location` WHERE UserName =?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$username]);
+        $this->current_location = $stmt->fetch();
+    }
+    // "ip": "102.250.4.221",
+    // "hostname": "8ta-250-4-221.telkomadsl.co.za",
+    // "city": "Pretoria",
+    // "region": "Gauteng",
+    // "country": "ZA",
+    // "loc": "-25.7449,28.1878",
+    // "org": "AS37457 Telkom SA Ltd.",
+    // "postal": "0083",
+    // "timezone": "Africa/Johannesburg"
+
+    function set_current_location_html($username, $data){
+        $this->set_current_location($username,null, null,null,null,$data["latitude"],$data["longitude"]);
+    }
+
+    function set_current_location_geobytes($username, $data){
+        $this->set_current_location($username,null, $data["city"],null,$data["country"],$data["latitude"],$data["longitude"]);
+    }
+
+    function user_set_location($username, $data){
+        $this->set_current_location($username,$data["address"], $data["city"],$data["street"],$data["country"],$data["latitude"],$data["longitude"]);
+    }
+    
+    function set_current_location($username,$address, $city,$street,$country,$latitude,$longitude){
+        date_default_timezone_set('Africa/Johannesburg');
+        $set_timestamp = date('r', 36000 + time());
+        echo $username, ' ',$address, ' ', $city,  $street, ' ',$country, ' ', $latitude,  ' ',$longitude,  ' ',$set_timestamp;
+        $this->get_current_location($username);
+        var_dump($this->current_location);
+        echo "===>",isset($this->current_location),"<===>",isset($this->current_location["UserName"]),"<===";
+        if (isset($this->current_location) && isset($this->current_location["UserName"])){
+            $sql = "UPDATE `location` SET `address`=?, `street`=?,`city`=?,`country`=?,`lat`=?,`lon`=? WHERE `UserName`=?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([$address,$street,$city,$country,$latitude,$longitude,$username]);
+        }else {
+            $sql = "INSERT INTO `location`(`UserName`, `address`, `city`, `country`, `street`, `lat`, `lon`)
+            VALUES (?, ?, ?, ?, ?, ?, ? )";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([$username, $address, $city, $country, $street, $latitude, $longitude]);
+        }
+
+    }
+
+}

@@ -24,26 +24,19 @@
             <span class ="badge badge-light"><?php 
               include "notification.php";
                 $id =$_SESSION['id'];
-              echo counter($id);?>   
-              
+               $notice_count = counter($id);  
+              echo $notice_count;?> 
               </span>
             </button>
             <ul class="dropdown-menu">
-              <?php
-                if(counter($id)>0){
-                  foreach(all_n($id) as $i){
-              ?>
+              
 
-                <li><a class ="dropdown-item" href="view.php?id=<?php echo $i['id']?>">
-                <small><i><?php echo $i['date']?></i></small><br/>
-                  <?php echo $i['messages']?>
+                <li><a class ="dropdown-item" href="view_notificatios.php">
+                <small><i><?php echo ($notice_count > 0 ?"View new notifications":"No new notificatios"); ?></i></small><br/>
                 </a></li>
               
-                <?php }
-                } else{
-                    echo "NO one likes you";
-              }
-              ?>
+                
+              
             </ul>
           </div>
         </li>
