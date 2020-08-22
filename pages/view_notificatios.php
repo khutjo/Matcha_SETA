@@ -47,8 +47,8 @@ if (!isset($_SESSION))
     // echo $location[1]["lat"], "\n";
     // echo $location[1]["lon"], "\n";
     // "origins=".$location[0]["lat"].",".$location[0]["lon"]."&destinations=".$location[1]["lat"].",".$location[1]["lon"]
-    // $data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=matric&origins=".$location[0]["lat"].",".$location[0]["lon"]."&destinations=".$location[1]["lat"].",".$location[1]["lon"]."&key=AIzaSyCyPPJAN_R1wNuzKbSa2SIjLk3i_nKl0Ak");
-    $data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=matric&origins=-25.739264,28.213248&&destinations=18.62744421970849,-33.9015521302915&&key=AIzaSyCyPPJAN_R1wNuzKbSa2SIjLk3i_nKl0Ak");
+    // $data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=matric&origins=".$location[0]["lat"].",".$location[0]["lon"]."&destinations=".$location[1]["lat"].",".$location[1]["lon"]."&key=YOUR_API_KEY");
+    $data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=matric&origins=-25.739264,28.213248&&destinations=18.62744421970849,-33.9015521302915&&key=YOUR_API_KEY);
     var_dump($data);
 
 
