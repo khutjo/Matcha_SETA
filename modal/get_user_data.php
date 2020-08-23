@@ -43,13 +43,14 @@
 				else 
 					$destinations=$location[1]["lat"].",".$location[1]["lon"];
 					
-				$data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=matric&origins=".$origins."&destinations=".$destinations."&key=AIzaSyCyPPJAN_R1wNuzKbSa2SIjLk3i_nKl0Ak");
+				$data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=matric&origins=".$origins."&destinations=".$destinations."&key=yourapikey");
 				$location_data["location"] = json_decode($data)->rows[0]->elements[0]->distance->text;
 			}else{
 				$location_data["location"] = "Not specified";
 			}
 			
 			$more_data = array_merge($profile, $images, $basic_shit, $location_data);
+
 
 			echo json_encode($more_data);
 			// echo json_encode(array($interests));
